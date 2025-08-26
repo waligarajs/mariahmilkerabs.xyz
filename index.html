@@ -2,155 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Personal Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile Site</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; color: #fff; }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    #bg-video {
-      position: fixed;
-      inset: 0;
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+    }
+
+    /* Video Section */
+    .video-section {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Full screen height */
+      overflow: hidden;
+    }
+
+    .video-section video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -1;
-      background: #000;
     }
 
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(80% 60% at 50% 20%, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
-      pointer-events: none;
-      z-index: 0;
+    /* Profile Card Overlay */
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
+    .card h1 {
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Links */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .links a {
+      background: #222;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .links a:hover {
+      background: #444;
+    }
+
+    /* Extra content after video (to test scroll) */
     .content {
-      position: relative;
-      z-index: 1;
-      min-height: 100dvh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      padding: 50px;
       text-align: center;
     }
-    .card {
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 28px 22px;
-      max-width: 680px;
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
-    h1 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 14px; }
-    p.tagline { opacity: 0.85; margin: 0 0 20px; }
-
-    .social { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
-    .social a {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: #e8f3ff;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 8px 12px; border-radius: 999px; font-weight: 600; font-size: 14px;
-      transition: transform .15s ease, background .2s ease;
-    }
-    .social a:hover { transform: translateY(-1px); background: rgba(255,255,255,0.12); }
-    .social svg { width: 16px; height: 16px; }
-
-    .copy {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 12px; padding: 10px 12px;
-      user-select: all;
-    }
-    .copy-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .2px; }
-    .copy button {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 0; border-radius: 10px; cursor: pointer;
-      padding: 8px 10px; font-weight: 700; font-size: 13px;
-      color: #0b0f14; background: #e6f2ff;
-      transition: transform .1s ease, filter .2s ease;
-    }
-    .copy button:hover { filter: brightness(0.95); }
-    .copy button:active { transform: translateY(1px); }
-    .copy .ok { display: none; }
-    .copy.copied .ok { display: inline; }
-    .copy.copied .copylabel { display: none; }
-
-    footer { position: fixed; bottom: 10px; left: 0; right: 0; text-align: center; opacity: 0.7; font-size: 12px; }
   </style>
 </head>
 <body>
-</section>
 
-  <!-- Scrollable video -->
-  <section>
-    <video id="bg-video" controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+  <!-- Scrollable Video Section -->
+  <section class="video-section">
+    <video autoplay muted loop playsinline preload="metadata">
       <source src="bg.webm" type="video/webm" />
       <source src="bg.mp4" type="video/mp4" />
       Your browser does not support the HTML5 video tag.
     </video>
- main class="content">
-  <section class="card">
-    <h1>Welcome to My Site</h1>
-    <p class="tagline">Links below • Tap to explore</p>
-  
+
+    <!-- Profile Card Overlay -->
+    <div class="card">
+      <h1>Welcome to My Site</h1>
+      <p class="tagline">Links below • Tap to explore</p>
+      <div class="links">
+        <a href="https://x.com/" target="_blank">X</a>
+        <a href="https://dexscreener.com/" target="_blank">Dexscreener</a>
+      </div>
+    </div>
   </section>
 
-      <nav class="social" aria-label="Social links">
-        <a href="https://x.com/MariahMilksabs" target="_blank" rel="noopener noreferrer" aria-label="Open X profile">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21l-6.475 7.4L22 22h-6.828l-4.473-5.807L5.6 22H3l6.92-7.91L2 2h6.828l4.2 5.6L18.244 2Zm-2.39 18h2.27L8.22 4h-2.3l9.934 16Z"/></svg>
-          X
-        </a>
-        <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" aria-label="Open Dexscreener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-          Dexscreener
-        </a>
-      </nav>
+  <!-- Extra Content Below -->
+  <section class="content">
+    <h2>More Content Below</h2>
+    <p>Scroll down to see more sections of your site.</p>
+  </section>
 
-      <div class="copy" id="copyWrap" role="group" aria-label="Copy code">
-        <span class="copy-code" id="copyText">i125656666485</span>
-        <button id="copyBtn" aria-live="polite" aria-label="Copy to clipboard">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a3 3 0 0 0-3 3v12h2V4a1 1 0 0 1 1-1h12V1Zm4 4H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12Z" fill="currentColor"/></svg>
-          <span class="copylabel">Copy</span>
-          <span class="ok">✔ Copied</span>
-        </button>
-      </div>
-    </section>
-  </main>
-
-  <footer>© <span id="year"></span> — Your Name</footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const btn = document.getElementById('copyBtn');
-    const wrap = document.getElementById('copyWrap');
-    const textEl = document.getElementById('copyText');
-
-    async function copyText() {
-      const text = textEl.textContent.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-        wrap.classList.add('copied');
-        setTimeout(() => wrap.classList.remove('copied'), 1500);
-      } catch (e) {
-        const r = document.createRange();
-        r.selectNode(textEl);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(r);
-        document.execCommand('copy');
-        sel.removeAllRanges();
-        wrap.classList.add('copied');
-        setTimeout(() => wrap.classList.remove('copied'), 1500);
-      }
-    }
-    btn.addEventListener('click', copyText);
-  </script>
 </body>
 </html>
