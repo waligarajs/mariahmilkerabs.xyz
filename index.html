@@ -8,12 +8,12 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; color: #fff; background: #000; }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      min-height: 100dvh;
-      display: grid;
-      place-items: center;
+    /* Center profile card */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;   /* full screen height */
       padding: 24px;
       text-align: center;
     }
@@ -26,7 +26,6 @@
       max-width: 1024px;
       width: 100%;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      margin-bottom: 40px;
     }
     h1 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 14px; }
     p.tagline { opacity: 0.85; margin: 0 0 20px; }
@@ -70,6 +69,7 @@
     .video-section {
       max-width: 100%;
       margin: 0 auto 40px;
+      padding: 0 20px;
     }
     video {
       display: block;
@@ -83,49 +83,42 @@
 </head>
 <body>
 
-  <main>
-    <section class="content">
-      <section class="card">
-        <h1>Welcome to My Site</h1>
-        <p class="tagline">Links below • Tap to explore</p>
+  <!-- Hero section with centered profile card -->
+  <section class="hero">
+    <section class="card">
+      <h1>Welcome to My Site</h1>
+      <p class="tagline">Links below • Tap to explore</p>
 
-        <nav class="social" aria-label="Social links">
-          <a href="https://x.com/MariahMilksabs" target="_blank" rel="noopener noreferrer" aria-label="Open X profile">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21l-6.475 7.4L22 22h-6.828l-4.473-5.807L5.6 22H3l6.92-7.91L2 2h6.828l4.2 5.6L18.244 2Zm-2.39 18h2.27L8.22 4h-2.3l9.934 16Z"/></svg>
-            X
-          </a>
-          <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" aria-label="Open Dexscreener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            Dexscreener
-          </a>
-        </nav>
+      <nav class="social" aria-label="Social links">
+        <a href="https://x.com/MariahMilksabs" target="_blank" rel="noopener noreferrer" aria-label="Open X profile">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21l-6.475 7.4L22 22h-6.828l-4.473-5.807L5.6 22H3l6.92-7.91L2 2h6.828l4.2 5.6L18.244 2Zm-2.39 18h2.27L8.22 4h-2.3l9.934 16Z"/></svg>
+          X
+        </a>
+        <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" aria-label="Open Dexscreener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          Dexscreener
+        </a>
+      </nav>
 
-        <div class="copy" id="copyWrap" role="group" aria-label="Copy code">
-          <span class="copy-code" id="copyText">i125656666485</span>
-          <button id="copyBtn" aria-live="polite" aria-label="Copy to clipboard">
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a3 3 0 0 0-3 3v12h2V4a1 1 0 0 1 1-1h12V1Zm4 4H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12Z" fill="currentColor"/></svg>
-            <span class="copylabel">Copy</span>
-            <span class="ok">✔ Copied</span>
-          </button>
-        </div>
-      </section>
+      <div class="copy" id="copyWrap" role="group" aria-label="Copy code">
+        <span class="copy-code" id="copyText">i125656666485</span>
+        <button id="copyBtn" aria-live="polite" aria-label="Copy to clipboard">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a3 3 0 0 0-3 3v12h2V4a1 1 0 0 1 1-1h12V1Zm4 4H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12Z" fill="currentColor"/></svg>
+          <span class="copylabel">Copy</span>
+          <span class="ok">✔ Copied</span>
+        </button>
+      </div>
     </section>
+  </section>
 
-    <!-- Scrollable video section -->
-    <section class="video-section">
-      <video controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
-        <source src="bg.webm" type="video/webm" />
-        <source src="bg.mp4" type="video/mp4" />
-        Your browser does not support the HTML5 video tag.
-      </video>
-    </section>
-
-    <section class="content">
-      <section class="card">
-        <p>More content can go here below the video...</p>
-      </section>
-    </section>
-  </main>
+  <!-- Scrollable video section -->
+  <section class="video-section">
+    <video controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+      <source src="bg.webm" type="video/webm" />
+      <source src="bg.mp4" type="video/mp4" />
+      Your browser does not support the HTML5 video tag.
+    </video>
+  </section>
 
   <footer>© <span id="year"></span> — Your Name</footer>
 
