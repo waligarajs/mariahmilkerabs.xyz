@@ -6,31 +6,49 @@
   <title>My Personal Site</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; color: #fff; background: #000; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; color: #fff; }
 
-    /* Center profile card */
-    .hero {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;   /* full screen height */
+    #bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      background: #000;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(80% 60% at 50% 20%, rgba(0,0,0,0.2), rgba(0,0,0,0.75));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
       padding: 24px;
       text-align: center;
     }
     .card {
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.45);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
       padding: 28px 22px;
-      max-width: 1024px;
+      max-width: 680px;
       width: 100%;
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
     h1 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 14px; }
     p.tagline { opacity: 0.85; margin: 0 0 20px; }
 
-    /* Social buttons */
     .social { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
     .social a {
       display: inline-flex; align-items: center; gap: 8px;
@@ -43,7 +61,6 @@
     .social a:hover { transform: translateY(-1px); background: rgba(255,255,255,0.12); }
     .social svg { width: 16px; height: 16px; }
 
-    /* Copy box */
     .copy {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(255,255,255,0.08);
@@ -65,29 +82,25 @@
     .copy.copied .ok { display: inline; }
     .copy.copied .copylabel { display: none; }
 
-    /* Video style */
-    .video-section {
-      max-width: 100%;
-      margin: 0 auto 40px;
-      padding: 0 20px;
-    }
-    video {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    footer { text-align: center; opacity: 0.7; font-size: 12px; padding: 20px; }
+    footer { position: fixed; bottom: 10px; left: 0; right: 0; text-align: center; opacity: 0.7; font-size: 12px; }
   </style>
 </head>
 <body>
 
-  <!-- Hero section with centered profile card -->
-  <section class="hero">
-    <section class="card">
-      <h1>Welcome to My Site</h1>
-      <p class="tagline">Links below • Tap to explore</p>
+ main class="content">
+  <section class="card">
+    <h1>Welcome to My Site</h1>
+    <p class="tagline">Links below • Tap to explore</p>
+  </section>
+
+  <!-- Scrollable video -->
+  <section>
+    <video id="bg-video" controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+      <source src="bg.webm" type="video/webm" />
+      <source src="bg.mp4" type="video/mp4" />
+      Your browser does not support the HTML5 video tag.
+    </video>
+  </section>
 
       <nav class="social" aria-label="Social links">
         <a href="https://x.com/MariahMilksabs" target="_blank" rel="noopener noreferrer" aria-label="Open X profile">
@@ -109,16 +122,7 @@
         </button>
       </div>
     </section>
-  </section>
-
-  <!-- Scrollable video section -->
-  <section class="video-section">
-    <video controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
-      <source src="bg.webm" type="video/webm" />
-      <source src="bg.mp4" type="video/mp4" />
-      Your browser does not support the HTML5 video tag.
-    </video>
-  </section>
+  </main>
 
   <footer>© <span id="year"></span> — Your Name</footer>
 
