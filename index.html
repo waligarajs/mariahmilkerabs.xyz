@@ -1,61 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Personal Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariah Milkers Style</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 200vh; /* allow scrolling */ }
-    body { font-family: system-ui, Arial, sans-serif; color: #fff; overflow-x: hidden; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: Arial, sans-serif; color: #fff; overflow-x: hidden; }
 
-    /* Background video layer */
-    .bg-container {
-      position: absolute;
+    /* Full-screen background video */
+    .bg-video-container {
+      position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       overflow: hidden;
       z-index: -2;
     }
     #bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;   /* ensures video fills the screen */
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
-
-    /* Overlay for readability */
     .overlay {
-      position: absolute;
+      position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
       z-index: -1;
     }
 
-    /* Profile Card */
-    .content {
+    /* Profile card */
+    .profile-card {
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 600px;
-      padding: 24px;
       background: rgba(0,0,0,0.6);
+      padding: 30px;
       border-radius: 20px;
       text-align: center;
       z-index: 1;
     }
+    .profile-card h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
 
-    /* Social Links */
-    .social {
-      margin: 20px 0;
+    /* Social links */
+    .social-links {
       display: flex;
       justify-content: center;
       gap: 12px;
+      margin-bottom: 20px;
     }
-    .social a {
+    .social-links a {
       color: #e8f3ff;
       background: rgba(255,255,255,0.08);
       padding: 8px 12px;
@@ -63,20 +59,23 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      background: rgba(255,255,255,0.2);
     }
 
-    /* Copy Section */
-    .copy {
-      margin-top: 20px;
+    /* Copy text */
+    .copy-container {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 10px;
       background: rgba(255,255,255,0.08);
       padding: 10px 16px;
       border-radius: 12px;
     }
-    .copy button {
+    .copy-container button {
       background: #e6f2ff;
       border: none;
       padding: 6px 10px;
@@ -86,9 +85,8 @@
       font-weight: bold;
     }
 
-    /* Footer */
     footer {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       width: 100%;
       text-align: center;
@@ -99,39 +97,38 @@
 </head>
 <body>
 
-  <!-- Background Video -->
-  <div class="bg-container">
-    <video id="bg-video" autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
-      <source src="bg.mp4" type="video/mp4">
-      <source src="bg.webm" type="video/webm">
-      Your browser doesn't support HTML5 video.
-    </video>
-    <div class="overlay"></div>
+<!-- Background video -->
+<div class="bg-video-container">
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4">
+    <source src="bg.webm" type="video/webm">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="overlay"></div>
+</div>
+
+<!-- Profile card -->
+<div class="profile-card">
+  <h1>Welcome to My Page</h1>
+  <div class="social-links">
+    <a href="https://x.com/MariahMilksabs" target="_blank">X</a>
+    <a href="https://dexscreener.com" target="_blank">Dexscreener</a>
   </div>
-
-  <!-- Profile Card -->
-  <div class="content">
-    <h1>Welcome to My Site</h1>
-    <div class="social">
-      <a href="https://x.com/MariahMilksabs" target="_blank">X</a>
-      <a href="https://dexscreener.com" target="_blank">Dexscreener</a>
-    </div>
-    <div class="copy">
-      <span id="copyText">i125656666485</span>
-      <button onclick="copyText()">Copy</button>
-    </div>
+  <div class="copy-container">
+    <span id="copyText">i125656666485</span>
+    <button onclick="copyText()">Copy</button>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer>© <span id="year"></span> — Your Name</footer>
+<footer>© <span id="year"></span> — Mariah Milkers</footer>
 
-  <!-- Script -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function copyText(){
-      const text = document.getElementById('copyText').innerText;
-      navigator.clipboard.writeText(text).then(() => alert('Copied: ' + text));
-    }
-  </script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  function copyText() {
+    const text = document.getElementById('copyText').innerText;
+    navigator.clipboard.writeText(text).then(() => alert('Copied: ' + text));
+  }
+</script>
+
 </body>
 </html>
