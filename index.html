@@ -10,14 +10,11 @@
     body { margin: 0; font-family: system-ui, -apple-system, Arial, sans-serif; color: #fff; }
 
     #bg-video {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      background: #000;
-    }
+  display: block;
+  width: 100%;
+  height: auto;   /* Keeps correct video ratio */
+  max-width: 100%;
+}
 
     .overlay {
       position: fixed;
@@ -87,11 +84,14 @@
 </head>
 <body>
 
-  <video id="bg-video" autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
-    <source src="bg.webm" type="video/webm" />
-    <source src="bg.mp4" type="video/mp4" />
-    Your browser does not support the HTML5 video tag.
-  </video>
+  <!-- Scrollable video -->
+  <section>
+    <video id="bg-video" controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+      <source src="bg.webm" type="video/webm" />
+      <source src="bg.mp4" type="video/mp4" />
+      Your browser does not support the HTML5 video tag.
+    </video>
+  </section>
   <div class="overlay" aria-hidden="true"></div>
 
   <main class="content">
