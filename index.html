@@ -14,40 +14,30 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #000;
+      background: #000; /* fallback background */
       color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;  /* horizontal center */
+      align-items: center;      /* vertical center */
     }
 
-    /* Video Section */
-    .video-section {
-      position: relative;
+    main {
       width: 100%;
-      height: 100vh; /* Full screen height */
-      overflow: hidden;
+      max-width: 600px;
+      text-align: center;
+      padding: 20px;
     }
 
-    .video-section video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Profile Card Overlay */
+    /* Profile Card */
     .card {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.7);
       padding: 20px;
       border-radius: 12px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
-    .card h1 {
+    h1 {
       margin-bottom: 10px;
     }
 
@@ -77,23 +67,17 @@
       background: #444;
     }
 
-    /* Extra content after video (to test scroll) */
-    .content {
-      padding: 50px;
-      text-align: center;
+    /* Scrollable Video Section */
+    section video {
+      width: 100%;
+      height: auto;
+      margin-top: 30px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-
-  <!-- Scrollable Video Section -->
-  <section class="video-section">
-    <video autoplay muted loop playsinline preload="metadata">
-      <source src="bg.webm" type="video/webm" />
-      <source src="bg.mp4" type="video/mp4" />
-      Your browser does not support the HTML5 video tag.
-    </video>
-
+  <main>
     <!-- Profile Card Overlay -->
     <div class="card">
       <h1>Welcome to My Site</h1>
@@ -102,14 +86,26 @@
         <a href="https://x.com/" target="_blank">X</a>
         <a href="https://dexscreener.com/" target="_blank">Dexscreener</a>
       </div>
+<div class="copy" id="copyWrap" role="group" aria-label="Copy code">
+        <span class="copy-code" id="copyText">i125656666485</span>
+        <button id="copyBtn" aria-live="polite" aria-label="Copy to clipboard">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M16 1H4a3 3 0 0 0-3 3v12h2V4a1 1 0 0 1 1-1h12V1Zm4 4H8a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12Z" fill="currentColor"/></svg>
+          <span class="copylabel">Copy</span>
+          <span class="ok">✔ Copied</span>
+        </button>
+      </div>
+
     </div>
   </section>
 
-  <!-- Extra Content Below -->
-  <section class="content">
-    <h2>More Content Below</h2>
-    <p>Scroll down to see more sections of your site.</p>
-  </section>
-
+    <!-- Scrollable Video -->
+    <section>
+      <video controls autoplay muted loop playsinline preload="metadata" poster="poster.jpg">
+        <source src="bg.webm" type="video/webm" />
+        <source src="bg.mp4" type="video/mp4" />
+        Your browser does not support the HTML5 video tag.
+      </video>
+    </section>
+  </main>
 </body>
 </html>
